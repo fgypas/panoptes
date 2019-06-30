@@ -43,7 +43,20 @@ def generate_dicts(log_fh):
 
 
 def main():
-    import_file = '/home/giorgos/PycharmProjects/vzflow/example_files/example.log'
+    """
+        -import_file "/home/giorgos/PycharmProjects/vzflow/example_files/example.log"
+        -export_csv_file "/home/gkost/Documents/logs/exported_tabular.csv"
+
+       :return:
+       """
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-import_file', metavar='import_file', type=str,
+                        help='Path to import the simulation json.')
+    parser.add_argument('-export_csv_file', metavar='export_csv_file', type=str,
+                        help='Path to export the results')
+    args = parser.parse_args()
+
+    import_file = args.import_file
     with open(import_file) as f:
         parced_logs = list(generate_dicts(f))
 
