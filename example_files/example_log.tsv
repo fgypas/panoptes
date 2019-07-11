@@ -1,0 +1,29 @@
+current_job	input	job_id	job_type	log	output	percent	rule	total_jobs	wildcards
+	['samples/control_rep1.bam']	6	submitted	logs/local_log/samtools_sort_control_rep1.log	['results/control_rep1.sorted.bam']		samtools_sort		['sample=control_rep1']
+	['samples/control_rep2.bam']	8	submitted	logs/local_log/samtools_sort_control_rep2.log	['results/control_rep2.sorted.bam']		samtools_sort		['sample=control_rep2']
+1		8	finished			7%		14	
+2		6	finished			14%		14	
+	['results/control_rep1.sorted.bam']	7	submitted	logs/local_log/samtools_index_control_rep1.log	['results/control_rep1.sorted.bam.bai']		samtools_index		['sample=control_rep1']
+	['results/control_rep2.sorted.bam']	9	submitted	logs/local_log/samtools_index_control_rep2.log	['results/control_rep2.sorted.bam.bai']		samtools_index		['sample=control_rep2']
+3		7	finished			21%		14	
+	['results/control_rep1.sorted.bam', ' results/control_rep1.sorted.bam.bai', ' samples/Homo_sapiens.GRCh37.85.chr14.gtf']	2	submitted	logs/local_log/HTSeq_count_control_rep1.log	['results/control_rep1.htseq.tsv']		HTSeq_count		['sample=control_rep1']
+4		9	finished			29%		14	
+	['results/control_rep2.sorted.bam', ' results/control_rep2.sorted.bam.bai', ' samples/Homo_sapiens.GRCh37.85.chr14.gtf']	3	submitted	logs/local_log/HTSeq_count_control_rep2.log	['results/control_rep2.htseq.tsv']		HTSeq_count		['sample=control_rep2']
+5		2	finished			36%		14	
+	['samples/HNRNPCKD_rep2.bam']	12	submitted	logs/local_log/samtools_sort_HNRNPCKD_rep2.log	['results/HNRNPCKD_rep2.sorted.bam']		samtools_sort		['sample=HNRNPCKD_rep2']
+6		3	finished			43%		14	
+	['samples/HNRNPCKD_rep1.bam']	10	submitted	logs/local_log/samtools_sort_HNRNPCKD_rep1.log	['results/HNRNPCKD_rep1.sorted.bam']		samtools_sort		['sample=HNRNPCKD_rep1']
+7		12	finished			50%		14	
+	['results/HNRNPCKD_rep2.sorted.bam']	13	submitted	logs/local_log/samtools_index_HNRNPCKD_rep2.log	['results/HNRNPCKD_rep2.sorted.bam.bai']		samtools_index		['sample=HNRNPCKD_rep2']
+8		10	finished			57%		14	
+	['results/HNRNPCKD_rep1.sorted.bam']	11	submitted	logs/local_log/samtools_index_HNRNPCKD_rep1.log	['results/HNRNPCKD_rep1.sorted.bam.bai']		samtools_index		['sample=HNRNPCKD_rep1']
+9		13	finished			64%		14	
+	['results/HNRNPCKD_rep2.sorted.bam', ' results/HNRNPCKD_rep2.sorted.bam.bai', ' samples/Homo_sapiens.GRCh37.85.chr14.gtf']	5	submitted	logs/local_log/HTSeq_count_HNRNPCKD_rep2.log	['results/HNRNPCKD_rep2.htseq.tsv']		HTSeq_count		['sample=HNRNPCKD_rep2']
+10		11	finished			71%		14	
+	['results/HNRNPCKD_rep1.sorted.bam', ' results/HNRNPCKD_rep1.sorted.bam.bai', ' samples/Homo_sapiens.GRCh37.85.chr14.gtf']	4	submitted	logs/local_log/HTSeq_count_HNRNPCKD_rep1.log	['results/HNRNPCKD_rep1.htseq.tsv']		HTSeq_count		['sample=HNRNPCKD_rep1']
+11		4	finished			79%		14	
+12		5	finished			86%		14	
+	['results/control_rep1.htseq.tsv', ' results/control_rep2.htseq.tsv', ' results/HNRNPCKD_rep1.htseq.tsv', ' results/HNRNPCKD_rep2.htseq.tsv']	1	submitted	logs/local_log/merge_results.log	['results/counts.htseq.merged.tsv']		merge_results		
+13		1	finished			93%		14	
+	['results/counts.htseq.merged.tsv']	0	submitted				finish		
+14		0	finished			100%		14	

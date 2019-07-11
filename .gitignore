@@ -21,3 +21,5 @@ vzflow_venv/
 snakemake
 
 __pycache__/
+
+venv

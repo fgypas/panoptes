@@ -5,6 +5,7 @@ from pandas.io.json import json_normalize
 import datetime
 import argparse
 import sys
+import pandas as pd
 
 DATE = 'date'
 LEVEL = 'level'
@@ -58,8 +59,6 @@ def structure_snakemake_logs(logs):
     for log in logs:
 
         if 'rule' in log['message']:
-
-            print(log["message"])
 
             try:
                 rule = re.search(r'rule (\w+):', log['message']).group(1)
@@ -139,12 +138,13 @@ def main():
     with open(import_file) as f:
         parced_logs = list(generate_dicts(f))
 
-    pprint(parced_logs)
+    # pprint(parced_logs)
 
-    print(structure_snakemake_logs(parced_logs))
+    list_of_logs = structure_snakemake_logs(parced_logs)
 
-    #data = parced_logs.jason_normalize()
-    #data.to_csv('exported.csv')
+    # dataframe to use to create
+    df = pd.DataFrame(list_of_logs)
+    df.to_csv(args.export_csv_file, sep="\t", header=True, index=False)
 
 
 if __name__ == '__main__':
