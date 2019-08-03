@@ -22,6 +22,10 @@ Install [Mongo DB](https://docs.mongodb.com/manual/installation/)
 
 Server should run on: http://127.0.0.1:27017/
 
+### Install Postman
+
+Install [Postman](https://www.getpostman.com/) to send mock json requests to the server.
+
 ### Install Flask server
 
 Create virtual environment
