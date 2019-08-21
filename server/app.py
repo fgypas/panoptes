@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template
 from flask_pymongo import PyMongo
+import traceback
 
 app = Flask(__name__, template_folder=".")
 app.config["MONGO_URI"] = "mongodb://localhost:27017/vzflow"
 mongo = PyMongo(app, connect=True)
+
 
 @app.route('/')
 def index():
@@ -15,13 +17,16 @@ def index():
              To check the status of the workflow go to the following route: <a href=\"/workflow_status\">/workflow_status</a> <br> \
              </html>"
 
-@app.route('/workflow_status', methods=['GET', 'POST'])
-def get_status():
+
+@app.route('/workflow_status/<id>', methods=['GET'])
+def get_status(id):
     try:
-        doc = db.vzflow.status.getOne()
+        doc = mongo.db.vzflow.status.getOne()
         return str(doc)
     except:
-        return f"<html>No workflow currently running!!!</html>"
+        traceback.print_exc()
+        return f"<html>No workflow currently running with id= {id}!!!</html>"
+
 
 @app.route('/update_workflow_status', methods=['POST', 'GET'])
 def update_status():
@@ -34,3 +39,5 @@ def update_status():
     return "asd"
 
 
+if __name__ == '__main__':
+    app.run()
