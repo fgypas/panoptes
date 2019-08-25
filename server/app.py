@@ -4,7 +4,7 @@ import traceback
 from server.models import Workflows, WorkflowMessages
 from server.schema_forms import SnakemakeUpdateForm
 
-app = Flask(__name__, template_folder=".")
+app = Flask(__name__, template_folder="templates")
 init_db()
 
 
@@ -17,6 +17,12 @@ def index():
              DB info: {Workflows.query.all()}. <br> \
              To check the status of the workflow go to the following route: <a href=\"/workflow_status\">/workflow_status</a> <br> \
              </html>"
+
+@app.route('/test')
+def index2():
+    workflows = Workflows.query.all()
+    print(workflows)
+    return render_template('workflows.html', workflows=workflows)
 
 
 @app.route('/workflow_status/<id>', methods=['GET'])
